@@ -87,9 +87,7 @@ class Ship:
     def updatescore(self,newscore):
         self.score += newscore
         self.canvas.itemconfigure('score', text="Score: " + str(self.score))
-
-
-
+        
 class App:
     def __init__(self,master):
         self.master = master
