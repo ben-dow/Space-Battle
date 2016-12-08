@@ -2,7 +2,15 @@ from tkinter import *
 import random
 
 class Bullet:
+    '''
+    Class Definintion of a Bullet Object
+    '''
     def __init__(self,canvas,spaceship,shipobject):
+        '''
+        Canvas: The canvas for the bullet to be created on
+        Spaceship: The identifier for the spaceship on the canvas. A polygon
+        Shipobject: An object of type Ship
+        '''
         self.canvas = canvas
         self.spaceship = spaceship
         self.shipobject = shipobject
@@ -34,19 +42,36 @@ class Bullet:
         self.canvas.after(20,self.move)
 
 class Enemy:
+    '''
+    Class Definintion of an enemy
+    '''
     def __init__(self,canvas,xval):
+        '''
+        Canvas: The canvas on which to create the enemy
+        xval: The xval at which the enemy is to be created
+        '''
         self.canvas = canvas
         self.enemy = self.canvas.create_polygon(0,0,20,20,25,30,30,20,50,0,30,10,20,10,fill= 'black', tag ='enemy')
         self.canvas.move(self.enemy,xval,0)
         self.movement()
 
+
     def movement(self):
+        '''
+        Moves the object downwards on the screen
+        '''
         self.canvas.move(self.enemy, 0,1)
         self.canvas.after(100,self.movement)
 
 
 class Ship:
+    '''
+    Class definition of a Ship (player)
+    '''
     def __init__(self,canvas):
+        '''
+        Canvas: Canvas on which to create the object
+        '''
         self.score = 0
         self.canvas = canvas
         self.spaceship = self.canvas.create_polygon(10,10,30,10,30,5,40,5,40,10,60,10,60,30,10,30,10,10,fill='black', tag='ship')
