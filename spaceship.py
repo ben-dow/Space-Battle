@@ -67,15 +67,17 @@ class Ship:
 
 class App:
     def __init__(self,master):
+        self.master = master
         self.canvas = Canvas(master,width=500, height = 500)
         self.canvas.pack()
+        self.create_player()
+
+    def create_player(self):
         self.spaceship = Ship(self.canvas)
-        master.bind_all("<Key>",self.spaceship.key)
-        master.bind("<space>",self.spaceship.shoot)
-        self.spawn_enemy()
+        self.master.bind_all("<Key>",self.spaceship.key)
+        self.master.bind("<space>",self.spaceship.shoot)
         self.canvas.create_text(30,490,text="Score: 0", tag = "score")
-
-
+        self.spawn_enemy()
 
     def spawn_enemy(self):
         position = random.randint(10,470)
